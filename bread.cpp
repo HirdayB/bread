@@ -6,14 +6,48 @@
 
 using namespace std;
 
+// void hasBread(std::string text){
+//     std::string bread = "bread";
+//     std::transform(text.begin(), text.end(), text.begin(), ::tolower);
+//     if (text.find(bread) != std::string::npos){
+//         std::cout << "HAS BREAD" << endl;
+//     } else {
+//         std::cout << "DOESN'T HAVE BREAD" << endl;
+//     }
+// }
+
 void hasBread(std::string text){
+    std::string transformed = text;
+    std::transform(transformed.begin(), transformed.end(), transformed.begin(), ::tolower);
     std::string bread = "bread";
-    std::transform(text.begin(), text.end(), text.begin(), ::tolower);
-    if (text.find(bread) != std::string::npos){
-        std::cout << "HAS BREAD" << endl;
-    } else {
-        std::cout << "DOESN'T HAVE BREAD" << endl;
+    std::string::size_type n = text.find('.');
+    int begin = 0;
+    while(n != std::string::npos){
+        std::string sub = transformed.substr(begin, n+1 - begin);
+        // std::cout << sub << endl;
+        if (sub.find(bread) != std::string::npos){
+            std::string sentence = text.substr(begin, n+1 - begin);
+            std::cout << sentence << endl;
+        //     std::cout << "HAS BREAD" << endl;
+        // } else {
+        //     std::cout << "DOESN'T HAVE BREAD" << endl;
+        }
+        begin = n+2;
+        n = text.find('.', n+1);
+        if (n == std::string::npos){
+            sub = transformed.substr(begin, transformed.size() - begin);
+            // std::cout << sub << endl;
+            if (sub.find(bread) != std::string::npos){
+                std::string sentence = text.substr(begin, transformed.size() - begin);
+                std::cout << sentence << endl;
+            //     std::cout << "HAS BREAD" << endl;
+            // } else {
+            //     std::cout << "DOESN'T HAVE BREAD" << endl;
+            }
+        }
     }
+    
+    
 }
 
 std::string reader(ifstream& text){
@@ -106,7 +140,7 @@ void menu(void){
     std::cout << "Which mode would you like to run?" << endl;
     std::cout << "Readymade Bread : 1" << endl;
     std::cout << "Test Your Bread : 2" << endl;
-    std::cout << "" << endl;
+    std::cout << "Highlighted Bread: 3" << endl;
     std::cout << "" << endl;
     
     std::string mode; 
@@ -116,6 +150,8 @@ void menu(void){
         ready();
     } else if (mode == "2"){
         input();
+    } else if (mode == "3"){
+        ready();
     } else {
         std::cout << "Please input a valid option." << endl;
         menu();
