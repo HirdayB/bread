@@ -2,15 +2,17 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
-bool hasBread(std::string text){
+void hasBread(std::string text){
     std::string bread = "bread";
+    std::transform(text.begin(), text.end(), text.begin(), ::tolower);
     if (text.find(bread) != std::string::npos){
-        return true;
+        std::cout << "HAS BREAD" << endl;
     } else {
-        return false;
+        std::cout << "DOESN'T HAVE BREAD" << endl;
     }
 }
 
@@ -25,22 +27,62 @@ std::string reader(ifstream& text){
 }
 
 void ready(){
+    std::cout << "Checking file 'dalton_trumbo.txt' for bread" << endl;
     ifstream dalton("texts/dalton_trumbo.txt");
     std::string daltonBread = reader(dalton);
-    // bool daltonHasBread = hasBread(daltonBread);
-    // std::cout << daltonHasBread << endl;
-    if (hasBread(daltonBread)){
-        std::cout << "HAS BREAD" << endl;
-    } else {
-        std::cout << "DOESN'T HAVE BREAD" << endl;
-    }
-    
-    // ifstream fyodor("texts/fyodor_dostoevsky.txt");
-    // ifstream kenneth("texts/kenneth_grahame.txt");
-    // ifstream margaret("texts/margaret_atwood.txt");
-    // ifstream terry("texts/terry_pratchett.txt");
-    // ifstream ursula("texts/ursula_leguin.txt");
-    // hasBread(dalton);
+    hasBread(daltonBread);
+
+    std::cout << "Checking file 'fyodor_dostoevsky.txt' for bread" << endl;
+    ifstream fyodor("texts/fyodor_dostoevsky.txt");
+    std::string fyodorBread = reader(fyodor);
+    hasBread(fyodorBread);
+
+    std::cout << "Checking file 'kenneth_grahame.txt' for bread" << endl;
+    ifstream kenneth("texts/kenneth_grahame.txt");
+    std::string kennethBread = reader(kenneth);
+    hasBread(kennethBread);
+
+    std::cout << "Checking file 'margaret_atwood.txt' for bread" << endl;
+    ifstream margaret("texts/margaret_atwood.txt");
+    std::string margaretBread = reader(margaret);
+    hasBread(margaretBread);
+
+    std::cout << "Checking file 'terry_pratchett.txt' for bread" << endl;
+    ifstream terry("texts/terry_pratchett.txt");
+    std::string terryBread = reader(terry);
+    hasBread(terryBread);
+
+    std::cout << "Checking file 'ursula_leguin.txt' for bread" << endl;
+    ifstream ursula("texts/ursula_leguin.txt");
+    std::string ursulaBread = reader(ursula);
+    hasBread(ursulaBread);
+
+    // TEST CASES BELOW
+
+    std::cout << "Checking file 'no_bread.txt' for bread" << endl;
+    ifstream no_bread("texts/tests/no_bread.txt");
+    std::string no_breadBread = reader(no_bread);
+    hasBread(no_breadBread);
+
+    std::cout << "Checking file 'capitalised.txt' for bread" << endl;
+    ifstream capital("texts/tests/capitalised.txt");
+    std::string capitalBread = reader(capital);
+    hasBread(capitalBread);
+
+    std::cout << "Checking file 'mixed.txt' for bread" << endl;
+    ifstream mixed("texts/tests/mixed.txt");
+    std::string mixedBread = reader(mixed);
+    hasBread(mixedBread);
+
+    std::cout << "Checking file 'uppercase.txt' for bread" << endl;
+    ifstream uppercase("texts/tests/uppercase.txt");
+    std::string uppercaseBread = reader(uppercase);
+    hasBread(uppercaseBread);
+
+    std::cout << "Checking file 'multiple.txt' for bread" << endl;
+    ifstream multiple("texts/tests/multiple.txt");
+    std::string multipleBread = reader(multiple);
+    hasBread(multipleBread);
 
 }
 
