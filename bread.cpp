@@ -18,7 +18,7 @@ std::string reader(ifstream& text){
     std::string reader;
     std::string output;
     while (getline(text, reader)){
-        std::cout << reader << endl;
+        // std::cout << reader << endl;
         output.append(reader + "\n");
     }
     return output;
@@ -27,8 +27,13 @@ std::string reader(ifstream& text){
 void ready(){
     ifstream dalton("texts/dalton_trumbo.txt");
     std::string daltonBread = reader(dalton);
-    bool daltonHasBread = hasBread(daltonBread);
-    std::cout << daltonHasBread << endl;
+    // bool daltonHasBread = hasBread(daltonBread);
+    // std::cout << daltonHasBread << endl;
+    if (hasBread(daltonBread)){
+        std::cout << "HAS BREAD" << endl;
+    } else {
+        std::cout << "DOESN'T HAVE BREAD" << endl;
+    }
     
     // ifstream fyodor("texts/fyodor_dostoevsky.txt");
     // ifstream kenneth("texts/kenneth_grahame.txt");
