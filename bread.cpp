@@ -16,11 +16,22 @@ using namespace std;
 //     }
 // }
 
+std::string::size_type findEnd(std::string text, int pos){
+    std::string::size_type n = text.find('.', pos);
+    if (text.find('?', pos) < n){
+        n = text.find('?', pos);
+    }
+    if (text.find('!', pos) < n){
+        n = text.find('!', pos);
+    }
+    return n;
+}
+
 void hasBread(std::string text){
     std::string transformed = text;
     std::transform(transformed.begin(), transformed.end(), transformed.begin(), ::tolower);
     std::string bread = "bread";
-    std::string::size_type n = text.find('.');
+    std::string::size_type n = findEnd(text, 0);
     int begin = 0;
     while(n != std::string::npos){
         std::string sub = transformed.substr(begin, n+1 - begin);
@@ -33,7 +44,7 @@ void hasBread(std::string text){
         //     std::cout << "DOESN'T HAVE BREAD" << endl;
         }
         begin = n+2;
-        n = text.find('.', n+1);
+        n = findEnd(text, n+1);
         if (n == std::string::npos){
             sub = transformed.substr(begin, transformed.size() - begin);
             // std::cout << sub << endl;
