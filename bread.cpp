@@ -59,47 +59,72 @@ void ready(){
 
     // TEST CASES BELOW
 
-    std::cout << "Checking file 'no_bread.txt' for bread" << endl;
-    ifstream no_bread("texts/tests/no_bread.txt");
-    std::string no_breadBread = reader(no_bread);
-    hasBread(no_breadBread);
+    std::cout << "Press T to run test cases" << endl;
 
-    std::cout << "Checking file 'capitalised.txt' for bread" << endl;
-    ifstream capital("texts/tests/capitalised.txt");
-    std::string capitalBread = reader(capital);
-    hasBread(capitalBread);
+    std::string test; 
+    
+    std::cin >> test;
+    if (test == "t" || test == "T"){
 
-    std::cout << "Checking file 'mixed.txt' for bread" << endl;
-    ifstream mixed("texts/tests/mixed.txt");
-    std::string mixedBread = reader(mixed);
-    hasBread(mixedBread);
+        std::cout << "Checking file 'no_bread.txt' for bread" << endl;
+        ifstream no_bread("texts/tests/no_bread.txt");
+        std::string no_breadBread = reader(no_bread);
+        hasBread(no_breadBread);
 
-    std::cout << "Checking file 'uppercase.txt' for bread" << endl;
-    ifstream uppercase("texts/tests/uppercase.txt");
-    std::string uppercaseBread = reader(uppercase);
-    hasBread(uppercaseBread);
+        std::cout << "Checking file 'capitalised.txt' for bread" << endl;
+        ifstream capital("texts/tests/capitalised.txt");
+        std::string capitalBread = reader(capital);
+        hasBread(capitalBread);
 
-    std::cout << "Checking file 'multiple.txt' for bread" << endl;
-    ifstream multiple("texts/tests/multiple.txt");
-    std::string multipleBread = reader(multiple);
-    hasBread(multipleBread);
+        std::cout << "Checking file 'mixed.txt' for bread" << endl;
+        ifstream mixed("texts/tests/mixed.txt");
+        std::string mixedBread = reader(mixed);
+        hasBread(mixedBread);
+
+        std::cout << "Checking file 'uppercase.txt' for bread" << endl;
+        ifstream uppercase("texts/tests/uppercase.txt");
+        std::string uppercaseBread = reader(uppercase);
+        hasBread(uppercaseBread);
+
+        std::cout << "Checking file 'multiple.txt' for bread" << endl;
+        ifstream multiple("texts/tests/multiple.txt");
+        std::string multipleBread = reader(multiple);
+        hasBread(multipleBread);        
+    }
+}
+
+void input(void){
+    std::cout << "Insert the text you would like to check:" << endl;
+    std::cin.ignore();
+    std::string inputBread;
+    std::getline(std::cin, inputBread);
+    // std::cout << inputBread << endl;
+    hasBread(inputBread);
+}
+
+void menu(void){
+    std::cout << "Which mode would you like to run?" << endl;
+    std::cout << "Readymade Bread : 1" << endl;
+    std::cout << "Test Your Bread : 2" << endl;
+    std::cout << "" << endl;
+    std::cout << "" << endl;
+    
+    std::string mode; 
+    
+    std::cin >> mode;
+    if (mode == "1"){
+        ready();
+    } else if (mode == "2"){
+        input();
+    } else {
+        std::cout << "Please input a valid option." << endl;
+        menu();
+    }
 
 }
 
 int main(void)
 {
-    std::cout << "Which mode would you like to run?" << endl;
-    std::cout << "Readymade Bread : 1" << endl;
-    std::cout << "" << endl;
-    std::cout << "" << endl;
-    std::cout << "" << endl;
-    
-    std::string mode = ""; 
-    
-    std::cin >> mode;
-    if (mode == "1"){
-        ready();
-    }
-    
+    menu();
     return EXIT_SUCCESS;
 }
