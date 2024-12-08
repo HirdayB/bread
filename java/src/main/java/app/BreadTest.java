@@ -66,9 +66,9 @@ public class BreadTest implements Handler {
         html = html + "<div class='topnav''>";
         html = html + "<a href='/'>Home</a>";
         html = html + "<a class='active' href='breadtext.html'>Check Text for Bread</a>";
-        html = html + "<a href='page3.html'>Check Text for more Breads</a>";
+        html = html + "<a href='moretext.html'>Check Text for more Breads</a>";
         html = html + "<a href='breadfile.html'>Check Files for Bread</a>";
-        html = html + "<a href='page3.html'>Check Files for more Breads</a>";
+        html = html + "<a href='morefiles.html'>Check Files for more Breads</a>";
         html = html + "</div>"; 
         
         html = html + "<main>";

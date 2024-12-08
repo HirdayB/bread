@@ -29,7 +29,8 @@ public class App {
         app.post(BreadTest.URL, new BreadTest());
         app.get(BreadFile.URL, new BreadFile());
         app.post(BreadFile.URL, new BreadFile());
-        
+        app.get(MoreText.URL, new MoreText());
+        app.post(MoreText.URL, new MoreText());
     }
 
 }

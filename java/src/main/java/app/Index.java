@@ -31,10 +31,10 @@ public class Index implements Handler {
         html = html + "<img src = 'bread2.png' width ='100%'/>";
         html = html + "<div class='centered'>Bakr.io</div>";
         html = html + "<div class='button-container'>";
-        html = html + "<button onclick=\"location.href='breadtest.html'\">Check any text</button>";
+        html = html + "<button onclick=\"location.href='breadtext.html'\">Check any text</button>";
         html = html + "<button onclick=\"location.href='breadfile.html'\">Check your text file</button>";
-        html = html + "<button onclick=\"location.href='breadtest.html'\">Check text for more breads</button>";
-        html = html + "<button onclick=\"location.href='breadtest.html'\">Check files for more breads</button>";
+        html = html + "<button onclick=\"location.href='moretext.html'\">Check text for more breads</button>";
+        html = html + "<button onclick=\"location.href='morefiles.html'\">Check files for more breads</button>";
         html = html + "</div>";
         html = html + "</div>";
 

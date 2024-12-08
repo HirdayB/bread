@@ -143,6 +143,13 @@ h2 {
     /* margin-top: 18%; */
 }
 
+#more {
+    margin-top: 15%;
+    background-color: white;
+    margin-left: 9%;
+    margin-right: 9%;
+} 
+
 #bakrio { 
     margin-top: 15%;
     background-color: white;
@@ -166,6 +173,25 @@ h3 {
     gap: 10px;
     margin-left: 30%;
     justify-content: center;
+}
+
+#moretext {
+    width: 500px;
+    height: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+#morebox {
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #breadbox {
