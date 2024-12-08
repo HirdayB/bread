@@ -68,10 +68,23 @@ public class BreadTest implements Handler {
                 html = html + "<h4 id='h4padding'>DOESN'T HAVE BREAD</h4>";
             } else {
                 html = html + "<h4 id='h4padding'>HAS BREAD</h4>";
+                html = html + "<div id=hasbread>";
                 html = html + "<h4></h4>";
                 for (int i = 0; i < breadsentences.size(); i++) {
-                    html = html + "<h4>"+breadsentences.get(i)+"</h4>";
+                    String sentence = breadsentences.get(i);
+                    String[] breadsplit = sentence.split(" ");
+                    html = html + "<h4>";
+                    for (int j = 0; j < breadsplit.length; j++) {
+                        if (breadsplit[j].toLowerCase().equals("bread")){
+                            html = html + "<mark>"+breadsplit[j]+"</mark> ";
+                        } else {
+                            html = html + breadsplit[j] + " ";
+                        }
+                    }
+                    html = html + "</h4>";
+                    // html = html + "<h4>"+breadsentences.get(i)+"</h4>";
                 }
+                html = html + "</div>";
             }
             
         }
