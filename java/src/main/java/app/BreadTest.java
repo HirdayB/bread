@@ -19,7 +19,7 @@ public class BreadTest implements Handler {
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/breadtext.html";
 
-    static String randimg(){
+    static String randimg(){ // method for random img generation when bread found
         Dictionary<Integer, String> imgs = new Hashtable<>();
         imgs.put(0, "bread0.png");
         imgs.put(1, "bread1.png");
@@ -32,17 +32,17 @@ public class BreadTest implements Handler {
         return img;
     }
 
-    static ArrayList<String> HasBread(String text) {
+    static ArrayList<String> HasBread(String text) {// method to split sentences and search for bread
         String transformed = text.toLowerCase();
-        String regex = "[.\\?\\!]";
+        String regex = "[.\\?\\!]"; // splits on ., ? and ! as those are sentence ends
         String bread = "bread";
         ArrayList<String> breadSentences = new ArrayList<String>();
         String[] sentences = transformed.split(regex);
         String[] textSentences = text.split(regex);
         for (int i = 0; i < sentences.length; i++) {
-            if (sentences[i].contains(bread)){
+            if (sentences[i].contains(bread)){ // checks each sentence for bread
                 // System.out.println(textSentences[i].trim());
-                breadSentences.add(textSentences[i].trim());
+                breadSentences.add(textSentences[i].trim()); // removes whitespace
             }
         }
         if (breadSentences.isEmpty()){
@@ -78,51 +78,30 @@ public class BreadTest implements Handler {
         html = html + "<h2> Here at Bakr.io you can submit any text you want and we'll show you where you can find the word bread!</h2>";
         html = html + "</div>";
 
-        // html = html + "<form id='method' action='/breadtest.html' method='POST'>";
-        // html = html + "<input type='radio' id='text file' name='method' value='text file'";
-        // html = html + "<label for='text file'>Text File</label>";
-        // html = html + "<input type='radio' id='text' name='method' value='text'";
-        // html = html + "<label for='text'>Text</label>";
-        // html = html + "<button type='submit'>Submit</button>";
-        // html = html + "</form>";
-
-        // String method = context.formParam("method");
+        // REMOVED: METHOD TO MERGE TEXT AND FILE UPLOADS INTO ONE PAGE
+            // html = html + "<form id='method' action='/breadtest.html' method='POST'>";
+            // html = html + "<input type='radio' id='text file' name='method' value='text file'";
+            // html = html + "<label for='text file'>Text File</label>";
+            // html = html + "<input type='radio' id='text' name='method' value='text'";
+            // html = html + "<label for='text'>Text</label>";
+            // html = html + "<button type='submit'>Submit</button>";
+            // html = html + "</form>";
+            // String method = context.formParam("method");
 
         
-        // if (method != null){
-        //     if (method.equals("text")){
+        // textbox for user text 
         html = html + "<form id=breadbox action='/breadtext.html' method='POST'>";
-                // html = html +     "<label for='breadtext'>Insert text here:</label>";
         html = html + "<textarea id='breadtext' name='breadtext' placeholder='Insert text here:'></textarea>";
         html = html + "<button id='breadbutton' type='submit'>Submit</button>";
         html = html + "</form>";
     
         String breadtext = context.formParam("breadtext");
-            // } else {
-        //         html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
-        //         html = html + "<label>Select a text file:</label>";
-        //         html = html + "<input type='file' name='breadfile'>";
-        //         html = html + "<button id='breadbutton' type='submit'>Submit</button>";
-        //         html = html + "</form>";
-        //         UploadedFile breadFile = context.uploadedFile("breadfile");
-        //         if (breadFile != null){
-        //             Scanner breadReader = new Scanner(breadFile.getContent());
-        //             String breadtext = "";
-        //             while (breadReader.hasNextLine()) {
-        //                 breadtext = breadtext.concat(breadReader.nextLine());
-        //                 System.out.println(breadtext);
-        //             }
-        //             breadReader.close(); 
-        //         }
-        //     }
-        // }
-
-        // String breadtext = context.formParam("breadtext");
+           
         ArrayList<String> breadsentences = new ArrayList<String>();
          
 
         if (breadtext != null) {
-            breadsentences = HasBread(breadtext);
+            breadsentences = HasBread(breadtext); // checks string for bread sentences
             if (breadsentences == null){
                 html = html + "<h4 id='h4padding'>DOESN'T HAVE BREAD</h4>";
             } else {
@@ -135,7 +114,7 @@ public class BreadTest implements Handler {
                     String sentence = breadsentences.get(i);
                     String[] breadsplit = sentence.split(" ");
                     html = html + "<h4>";
-                    for (int j = 0; j < breadsplit.length; j++) {
+                    for (int j = 0; j < breadsplit.length; j++) { // highlights bread within sentences
                         if (breadsplit[j].toLowerCase().equals("bread")){
                             html = html + "<mark>"+breadsplit[j]+"</mark> ";
                         } else {

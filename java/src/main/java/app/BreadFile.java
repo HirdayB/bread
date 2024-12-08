@@ -19,7 +19,7 @@ public class BreadFile implements Handler {
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/breadfile.html";
 
-    static String randimg(){
+    static String randimg(){ // method for random img generation when bread found
         Dictionary<Integer, String> imgs = new Hashtable<>();
         imgs.put(0, "bread0.png");
         imgs.put(1, "bread1.png");
@@ -32,17 +32,17 @@ public class BreadFile implements Handler {
         return img;
     }
 
-    static ArrayList<String> HasBread(String text) {
+    static ArrayList<String> HasBread(String text) {// method to split sentences and search for bread
         String transformed = text.toLowerCase();
-        String regex = "[.\\?\\!]";
+        String regex = "[.\\?\\!]"; // splits on ., ? and ! as those are sentence ends
         String bread = "bread";
         ArrayList<String> breadSentences = new ArrayList<String>();
         String[] sentences = transformed.split(regex);
         String[] textSentences = text.split(regex);
         for (int i = 0; i < sentences.length; i++) {
-            if (sentences[i].contains(bread)){
+            if (sentences[i].contains(bread)){ // checks each sentence for bread
                 // System.out.println(textSentences[i].trim());
-                breadSentences.add(textSentences[i].trim());
+                breadSentences.add(textSentences[i].trim()); // removes whitespace
             }
         }
         if (breadSentences.isEmpty()){
@@ -77,8 +77,7 @@ public class BreadFile implements Handler {
         html = html + "<h2> Do you want to know if your text passage contains the word bread? Look no further!</h2>";
         html = html + "<h2> Here at Bakr.io you can submit any text you want and we'll show you where you can find the word bread!</h2>";
         html = html + "</div>";
-
-
+        // file uploads
         html = html + "<form id=breadbox action='/breadfile.html' method='POST' enctype='multipart/form-data'>";
         html = html + "<label>Select a text file:</label>";
         html = html + "<input type='file' name='breadfile'>";
@@ -91,7 +90,7 @@ public class BreadFile implements Handler {
             Scanner breadReader = new Scanner(breadFile.getContent());
             breadtext = "";
             while (breadReader.hasNextLine()) {
-                breadtext = breadtext.concat(breadReader.nextLine());
+                breadtext = breadtext.concat(breadReader.nextLine()); // reads file to string
             }
             breadReader.close(); 
         }
@@ -100,7 +99,7 @@ public class BreadFile implements Handler {
          
 
         if (breadtext != null) {
-            breadsentences = HasBread(breadtext);
+            breadsentences = HasBread(breadtext); // checks string for bread sentences
             if (breadsentences == null){
                 html = html + "<h4 id='h4padding'>DOESN'T HAVE BREAD</h4>";
             } else {
@@ -113,7 +112,7 @@ public class BreadFile implements Handler {
                     String sentence = breadsentences.get(i);
                     String[] breadsplit = sentence.split(" ");
                     html = html + "<h4>";
-                    for (int j = 0; j < breadsplit.length; j++) {
+                    for (int j = 0; j < breadsplit.length; j++) { // highlights bread within sentences
                         if (breadsplit[j].toLowerCase().equals("bread")){
                             html = html + "<mark>"+breadsplit[j]+"</mark> ";
                         } else {

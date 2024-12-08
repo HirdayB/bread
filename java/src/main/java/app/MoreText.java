@@ -19,9 +19,9 @@ public class MoreText implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/moretext.html";
-    private static final ArrayList<String> more = new ArrayList<String>(); 
+    private static final ArrayList<String> more = new ArrayList<String>(); // for storing values to search for bread
 
-    static String randimg(){
+    static String randimg(){ // method for random img generation when bread found
         Dictionary<Integer, String> imgs = new Hashtable<>();
         imgs.put(0, "bread0.png");
         imgs.put(1, "bread1.png");
@@ -34,22 +34,22 @@ public class MoreText implements Handler {
         return img;
     }
 
-    static ArrayList<String> HasBread(String text) {
+    static ArrayList<String> HasBread(String text) {  // method to split sentences and search for bread
         String transformed = text.toLowerCase();
-        String regex = "[.\\?\\!]";
+        String regex = "[.\\?\\!]"; // splits on ., ? and ! as those are sentence ends
         // String bread = "bread";
         ArrayList<String> breadSentences = new ArrayList<String>();
         String[] sentences = transformed.split(regex);
         String[] textSentences = text.split(regex);
         for (int i = 0; i < sentences.length; i++) {
             for (int j = 0; j < more.size(); j++) {
-                if (sentences[i].contains(more.get(j)) || sentences[i].contains("bread")){
+                if (sentences[i].contains(more.get(j)) || sentences[i].contains("bread")){ // checks each sentence for containing bread
                     // System.out.println(textSentences[i].trim());
-                    breadSentences.add(textSentences[i].trim());
+                    breadSentences.add(textSentences[i].trim()); // gets rid of whitespace
                 }   
             }
         }
-        for (int i = 0; i < breadSentences.size(); i++) {
+        for (int i = 0; i < breadSentences.size(); i++) { // for loop for getting rid of duplicates
             for (int j = 0; j < breadSentences.size(); j++) {
                 if (i!=j && breadSentences.get(i).equals(breadSentences.get(j))){
                     breadSentences.remove(j);
@@ -93,7 +93,7 @@ public class MoreText implements Handler {
             html = html + "<h2> List the words you want to search in the text box below!</h2>";
             html = html + "<h2> Make sure to separate each word or phrase with a comma (i.e Rye, Wheat, Banana Bread, etc...)</h2>";
             html = html + "</div>";
-    
+            // textbox for bread words
             html = html + "<form id=morebox action='/moretext.html' method='POST'>";
             html = html + "<textarea id='breadtext' name='moretext' placeholder='Insert words here:'></textarea>";
             html = html + "<button id='morebutton' type='submit'>Submit</button>";
@@ -106,14 +106,13 @@ public class MoreText implements Handler {
             html = html + "<h2> Do you want to know if your text passage contains the word bread? Look no further!</h2>";
             html = html + "<h2> Here at Bakr.io you can submit any text you want and we'll show you where you can find the word bread!</h2>";
             html = html + "</div>";
-            
-    
+            // textbox for text to check
             html = html + "<form id=breadbox action='/moretext.html' method='POST'>";
             html = html + "<textarea id='breadtext' name='breadtext' placeholder='Insert text here:'></textarea>";
             html = html + "<button id='breadbutton' type='submit'>Submit</button>";
             html = html + "</form>";
 
-            if (moretext.length() > 0){
+            if (moretext.length() > 0){ // adds the user specified words to the arraylist to check
                 String[] morewords = moretext.split(",");
                 // more.addAll(Arrays.asList(morewords));
                 for (int i = 0; i < morewords.length; i++) {
@@ -128,14 +127,17 @@ public class MoreText implements Handler {
          
 
         if (breadtext != null) {
-            breadsentences = HasBread(breadtext);
-            if (breadsentences != null){
-                String img = randimg();
+            breadsentences = HasBread(breadtext); // returns which sentences have bread
+            if (breadsentences == null){
+                html = html + "<h4 id='h4padding'>DOESN'T HAVE BREAD</h4>";
+            } else {
+                String img = randimg(); // generates random img
                 html = html + "<style>body {background-image: url('"+img+"');}</style>";
+                html = html + "<h4 id='h4padding'>HAS BREAD</h4>";
                 html = html + "<div id=hasbread>";
                 html = html + "<h4></h4>";
-                for (int i = 0; i < more.size(); i++) {
-                    String[] tempsplit = more.get(i).split(" ");
+                for (int i = 0; i < more.size(); i++) { // this for loop iterates through word pairs and separates them to assist with highlighting
+                    String[] tempsplit = more.get(i).split(" "); // i.e. banana bread
                     if (tempsplit.length > 1){
                         more.remove(i);
                         for (int j = 0; j < tempsplit.length; j++) {
@@ -145,7 +147,7 @@ public class MoreText implements Handler {
                     }
                     
                 }
-                for (int i = 0; i < breadsentences.size(); i++) {
+                for (int i = 0; i < breadsentences.size(); i++) { // goes through every sentence and highlights every bread word
                     String sentence = breadsentences.get(i);
                     String[] breadsplit = sentence.split(" ");
                     html = html + "<h4>";
