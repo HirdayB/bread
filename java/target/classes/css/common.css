@@ -1,0 +1,120 @@
+/* -----------------------
+Base styles
+------------------------*/
+
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #25252c;
+	background-color: #ffffff;
+	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.homebanner {
+	font-weight: 700;
+	font-size: 4.8rem;
+	color: #ffffff;
+}
+
+.centered {
+    font-size: 175px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: black;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+	background-color: #25252c;
+	overflow: hidden;
+}
+  
+  /* Style the links inside the navigation bar */
+.topnav a {
+	float: left;
+	color: #ffffff;
+	text-align: center;
+	padding: 20px 24px;
+	text-decoration: none;
+	font-size: 17px;
+}
+  
+  /* Change the color of links on hover */
+.topnav a:hover {
+	background-color: #ffffff;
+	color: black;
+}
+  
+  /* Add a color to the active/current link */
+.topnav a.active {
+	background-color: #21b6ca;
+	color: white;
+}
+
+.headline {
+	display: flex;
+  	justify-content: center;
+	align-items: center;
+	min-height: 100px;
+  	padding: 20px;
+}
+
+.headline_2 {
+	display: flex;
+  	justify-content: left;
+	align-items: center;
+	min-height: 100px;
+  	padding: 20px;
+}
+
+.headline_3 {
+	display: flex;
+  justify-content: left;
+	align-items: center;
+	min-height: 50px;
+	border-bottom: 5px solid #21b6ca;
+}
+
+
+.content_flow img{
+	height: 150px;
+}
+
+h2 {
+    align-items: center;
+    text-align: center;
+    margin-top: 18%;
+}
+
+#breadbox {
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#breadtext {
+    width: 500px;
+    height: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+button {
+    display: block;
+}
