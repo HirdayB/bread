@@ -43,7 +43,7 @@ public class MoreText implements Handler {
         String[] textSentences = text.split(regex);
         for (int i = 0; i < sentences.length; i++) {
             for (int j = 0; j < more.size(); j++) {
-                if (sentences[i].contains(more.get(j))){
+                if (sentences[i].contains(more.get(j)) || sentences[i].contains("bread")){
                     // System.out.println(textSentences[i].trim());
                     breadSentences.add(textSentences[i].trim());
                 }   
@@ -119,9 +119,6 @@ public class MoreText implements Handler {
                 for (int i = 0; i < morewords.length; i++) {
                     more.add(morewords[i].trim());
                 }
-                for (int i = 0; i < more.size(); i++) {
-                    System.out.println(more.get(i));
-                }
             }
         }
 
@@ -154,8 +151,12 @@ public class MoreText implements Handler {
                     html = html + "<h4>";
                     for (int j = 0; j < breadsplit.length; j++) {
                         boolean word = false;
+                        if (breadsplit[j].toLowerCase().equals("bread") && word == false){
+                            html = html + "<mark>"+breadsplit[j]+"</mark> ";
+                            word = true;
+                        }
                         for (int k = 0; k < more.size(); k++) {
-                            if (breadsplit[j].toLowerCase().equals(more.get(k))){
+                            if (breadsplit[j].toLowerCase().equals(more.get(k)) && word == false){
                                 html = html + "<mark>"+breadsplit[j]+"</mark> ";
                                 word = true;
                             }

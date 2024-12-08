@@ -31,6 +31,8 @@ public class App {
         app.post(BreadFile.URL, new BreadFile());
         app.get(MoreText.URL, new MoreText());
         app.post(MoreText.URL, new MoreText());
+        app.get(MoreFiles.URL, new MoreFiles());
+        app.post(MoreFiles.URL, new MoreFiles());
     }
 
 }
