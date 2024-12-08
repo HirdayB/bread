@@ -7,8 +7,12 @@ import io.javalin.http.Handler;
 
 import java.util.Random;
 import java.util.Dictionary;
-import java.util.Enumeration;
+// import java.util.Enumeration;
 import java.util.Hashtable;
+import java.io.File;
+import java.util.Scanner;
+
+import io.javalin.http.UploadedFile;
 
 public class BreadTest implements Handler {
 
@@ -73,14 +77,48 @@ public class BreadTest implements Handler {
         html = html + "<h2> Here at Bakr.io you can submit any text you want and we'll show you where you can find the word bread!</h2>";
         html = html + "</div>";
 
-        html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
-        // html = html +     "<label for='breadtext'>Insert text here:</label>";
-        html = html +     "<textarea id='breadtext' name='breadtext' placeholder='Insert text here:'></textarea>";
-        html = html +     "<button type='submit'>Submit</button>";
-        html = html + "</form>";
+        // html = html + "<form id='method' action='/breadtest.html' method='POST'>";
+        // html = html + "<input type='radio' id='text file' name='method' value='text file'";
+        // html = html + "<label for='text file'>Text File</label>";
+        // html = html + "<input type='radio' id='text' name='method' value='text'";
+        // html = html + "<label for='text'>Text</label>";
+        // html = html + "<button type='submit'>Submit</button>";
+        // html = html + "</form>";
 
+        // String method = context.formParam("method");
+
+        
+        // if (method != null){
+        //     if (method.equals("text")){
+        html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
+                // html = html +     "<label for='breadtext'>Insert text here:</label>";
+        html = html + "<textarea id='breadtext' name='breadtext' placeholder='Insert text here:'></textarea>";
+        html = html + "<button id='breadbutton' type='submit'>Submit</button>";
+        html = html + "</form>";
+    
         String breadtext = context.formParam("breadtext");
-        ArrayList<String> breadsentences = new ArrayList<String>(); 
+            // } else {
+        //         html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
+        //         html = html + "<label>Select a text file:</label>";
+        //         html = html + "<input type='file' name='breadfile'>";
+        //         html = html + "<button id='breadbutton' type='submit'>Submit</button>";
+        //         html = html + "</form>";
+        //         UploadedFile breadFile = context.uploadedFile("breadfile");
+        //         if (breadFile != null){
+        //             Scanner breadReader = new Scanner(breadFile.getContent());
+        //             String breadtext = "";
+        //             while (breadReader.hasNextLine()) {
+        //                 breadtext = breadtext.concat(breadReader.nextLine());
+        //                 System.out.println(breadtext);
+        //             }
+        //             breadReader.close(); 
+        //         }
+        //     }
+        // }
+
+        // String breadtext = context.formParam("breadtext");
+        ArrayList<String> breadsentences = new ArrayList<String>();
+         
 
         if (breadtext != null) {
             breadsentences = HasBread(breadtext);
