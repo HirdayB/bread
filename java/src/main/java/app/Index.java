@@ -28,7 +28,7 @@ public class Index implements Handler {
         html = html + "<main>";
 
         html = html + "<div class='homebanner'>" +
-                    "<img src = 'breads.png' width ='100%'/>" +
+                    "<img src = 'bread2.png' width ='100%'/>" +
                     "<div class='centered'>Bakr.io</div>" +
                     "</div>";
 

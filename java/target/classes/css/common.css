@@ -11,6 +11,8 @@ body
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
+
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -96,8 +98,12 @@ h2 {
     /* margin-top: 18%; */
 }
 
-#padder{
+#bakrio { 
     margin-top: 15%;
+    background-color: white;
+    margin-left: 9%;
+    margin-right: 9%;
+    /* border: 5px solid black; */
 }
 
 h3 {
@@ -133,6 +139,7 @@ h4 {
 #hasbread{
     align-items: center;
     text-align: center;
+    background-color: #ffffff;
     border: 2px double black;
     margin-left: 30%;
     margin-right: 30%;
@@ -142,6 +149,10 @@ h4 {
 
 #h4padding {
     margin-top: 1%;
+    background-color: #ffffff;
+    border: 2px solid black;
+    margin-left: 45%;
+    margin-right: 45%;
 }
 
 button {

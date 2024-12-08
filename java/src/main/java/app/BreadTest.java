@@ -5,10 +5,28 @@ import java.util.ArrayList;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
+import java.util.Random;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
+
 public class BreadTest implements Handler {
 
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/breadtest.html";
+
+    static String randimg(){
+        Dictionary<Integer, String> imgs = new Hashtable<>();
+        imgs.put(0, "bread0.png");
+        imgs.put(1, "bread1.png");
+        imgs.put(2, "bread2.png");
+        imgs.put(3, "bread3.png");
+        imgs.put(4, "bread4.png");
+        Random rand = new Random();
+        int imgNum = rand.nextInt(0,imgs.size());
+        String img = imgs.get(imgNum);
+        return img;
+    }
 
     static ArrayList<String> HasBread(String text) {
         String transformed = text.toLowerCase();
@@ -50,8 +68,10 @@ public class BreadTest implements Handler {
         
         html = html + "<main>";
 
-        html = html + "<h2 id='padder'> Do you want to know if your text passage contains the word bread? Look no further!</h2>";
+        html = html + "<div id=bakrio>";
+        html = html + "<h2> Do you want to know if your text passage contains the word bread? Look no further!</h2>";
         html = html + "<h2> Here at Bakr.io you can submit any text you want and we'll show you where you can find the word bread!</h2>";
+        html = html + "</div>";
 
         html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
         // html = html +     "<label for='breadtext'>Insert text here:</label>";
@@ -67,6 +87,8 @@ public class BreadTest implements Handler {
             if (breadsentences == null){
                 html = html + "<h4 id='h4padding'>DOESN'T HAVE BREAD</h4>";
             } else {
+                String img = randimg();
+                html = html + "<style>body {background-image: url('"+img+"');}</style>";
                 html = html + "<h4 id='h4padding'>HAS BREAD</h4>";
                 html = html + "<div id=hasbread>";
                 html = html + "<h4></h4>";
