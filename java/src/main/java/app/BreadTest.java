@@ -36,12 +36,8 @@ public class BreadTest implements Handler {
         html = html +     "<button type='submit'>Submit</button>";
         html = html + "</form>";
 
-        // Finish the HTML webpage
         html = html + "</main>" + "</body>" + "</html>";
 
-
-        // DO NOT MODIFY THIS
-        // Makes Javalin render the webpage
         context.html(html);
     }
 
