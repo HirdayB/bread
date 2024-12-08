@@ -17,7 +17,7 @@ import io.javalin.http.UploadedFile;
 public class BreadTest implements Handler {
 
     // URL of this page relative to http://localhost:7000/
-    public static final String URL = "/breadtest.html";
+    public static final String URL = "/breadtext.html";
 
     static String randimg(){
         Dictionary<Integer, String> imgs = new Hashtable<>();
@@ -65,9 +65,10 @@ public class BreadTest implements Handler {
                 // Links to other pages
         html = html + "<div class='topnav''>";
         html = html + "<a href='/'>Home</a>";
-        html = html + "<a class='active' href='breadtest.html'>Does it have Bread?</a>";
-        html = html + "<a href='page2.html'>Where is the Bread?</a>";
-        html = html + "<a href='page3.html'>Types of Bread</a>";
+        html = html + "<a class='active' href='breadtext.html'>Check Text for Bread</a>";
+        html = html + "<a href='page3.html'>Check Text for more Breads</a>";
+        html = html + "<a href='breadfile.html'>Check Files for Bread</a>";
+        html = html + "<a href='page3.html'>Check Files for more Breads</a>";
         html = html + "</div>"; 
         
         html = html + "<main>";
@@ -90,7 +91,7 @@ public class BreadTest implements Handler {
         
         // if (method != null){
         //     if (method.equals("text")){
-        html = html + "<form id=breadbox action='/breadtest.html' method='POST'>";
+        html = html + "<form id=breadbox action='/breadtext.html' method='POST'>";
                 // html = html +     "<label for='breadtext'>Insert text here:</label>";
         html = html + "<textarea id='breadtext' name='breadtext' placeholder='Insert text here:'></textarea>";
         html = html + "<button id='breadbutton' type='submit'>Submit</button>";
