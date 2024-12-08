@@ -93,14 +93,24 @@ body
 h2 {
     align-items: center;
     text-align: center;
-    margin-top: 18%;
+    /* margin-top: 18%; */
+}
+
+#padder{
+    margin-top: 15%;
+}
+
+h3 {
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
 }
 
 #breadbox {
     align-items: center;
     margin-left: 30%;
     margin-right: 30%;
-    margin-top: 1%;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -113,6 +123,16 @@ h2 {
     padding-left: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
+}
+
+h4 {
+    align-items: center;
+    text-align: center;
+    border: red;
+}
+
+#h4padding {
+    margin-top: 1%;
 }
 
 button {

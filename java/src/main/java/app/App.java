@@ -26,6 +26,7 @@ public class App {
 
         app.get(Index.URL, new Index());
         app.get(BreadTest.URL, new BreadTest());
+        app.post(BreadTest.URL, new BreadTest());
         
     }
 
